@@ -4,17 +4,27 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { PingService } from './ping.service';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './app.routes';
+import { MenuComponent } from './menu/menu.component';
+import { PingslistComponent } from './pingslist/pingslist.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    MenuComponent,
+    PingslistComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ PingService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
