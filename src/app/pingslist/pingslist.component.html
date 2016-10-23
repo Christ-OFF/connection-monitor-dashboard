@@ -1,0 +1,31 @@
+<h2>Measures : {{pings.total_rows}} </h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <th>Date/Time</th>
+      <th>Latency</th>
+      <th>% PacketLoss</th>
+      <th>DNS</th>
+      <th>Web</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ping of pings.rows">
+        <td>{{ping.id | dateFormat }}</td>
+        <td>{{ping.doc.latency}}</td>
+        <td>{{ping.doc.packetloss | percentFormat }}</td>
+        <td>
+            <span
+                class="glyphicon"
+                [ngClass]="{  'glyphicon-ok': ping.doc.dns == 'true' ,
+                              'glyphicon-remove': ping.doc.dns == 'false' }"></span>
+        </td>
+        <td>
+          <span
+            class="glyphicon"
+            [ngClass]="{  'glyphicon-ok': ping.doc.web == 'true' ,
+                          'glyphicon-remove': ping.doc.web == 'false' }"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+ </div>
