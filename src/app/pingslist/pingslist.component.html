@@ -16,14 +16,14 @@
         <td>
             <span
                 class="glyphicon"
-                [ngClass]="{  'glyphicon-ok': ping.doc.dns == 'true' ,
-                              'glyphicon-remove': ping.doc.dns == 'false' }"></span>
+                [ngClass]="{  'glyphicon-ok icon-success': ping.doc.dns == 'true' ,
+                              'glyphicon-remove icon-failure': ping.doc.dns == 'false' }"></span>
         </td>
         <td>
           <span
             class="glyphicon"
-            [ngClass]="{  'glyphicon-ok': ping.doc.web == 'true' ,
-                          'glyphicon-remove': ping.doc.web == 'false' }"></span>
+            [ngClass]="{  'glyphicon-ok icon-success': ping.doc.web == 'true' ,
+                          'glyphicon-remove icon-failure': ping.doc.web == 'false' }"></span>
         </td>
       </tr>
     </tbody>
