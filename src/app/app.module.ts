@@ -10,13 +10,17 @@ import { ROUTES } from './app.routes';
 import { MenuComponent } from './menu/menu.component';
 import { PingslistComponent } from './pingslist/pingslist.component';
 import { HomeComponent } from './home/home.component';
+import { DateFormatPipe } from './date-format.pipe';
+import { PercentFormatPipe } from './percent-format.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
-    PingslistComponent
+    PingslistComponent,
+    DateFormatPipe,
+    PercentFormatPipe
   ],
   imports: [
     BrowserModule,

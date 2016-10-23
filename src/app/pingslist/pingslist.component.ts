@@ -9,15 +9,13 @@ import { CouchDBModel } from '../models/couchdb.model';
 })
 export class PingslistComponent implements OnInit {
 
-  pings: any = null;
+  // Initialize with empty object so the view will work anyway
+  pings: CouchDBModel = { total_rows: 0, offset: 0 , rows: [] };
 
   constructor(private pingService: PingService ) { }
 
   ngOnInit() {
-      this.pingService.list().subscribe( receivedPings => {
-        this.pings = receivedPings;
-        console.log(this.pings);
-      } );
+      this.pingService.list().subscribe( receivedPings => this.pings = receivedPings );
   }
 
 }
