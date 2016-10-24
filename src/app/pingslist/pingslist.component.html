@@ -1,10 +1,10 @@
 <h2>Measures : {{pings.total_rows}} </h2>
 <div class="table-responsive">
-  <table class="table table-striped">
+  <table class="table table-sm">
     <thead>
       <th>Date/Time</th>
       <th>Latency</th>
-      <th>% PacketLoss</th>
+      <th>Packet loss</th>
       <th>DNS</th>
       <th>Web</th>
     </thead>
@@ -14,16 +14,14 @@
         <td>{{ping.doc.latency}}</td>
         <td>{{ping.doc.packetloss | percentFormat }}</td>
         <td>
-            <span
-                class="glyphicon"
-                [ngClass]="{  'glyphicon-ok icon-success': ping.doc.dns == 'true' ,
-                              'glyphicon-remove icon-failure': ping.doc.dns == 'false' }"></span>
+            <i aria-hidden="true" class="fa"
+                [ngClass]="{  'fa-check icon-success': ping.doc.dns == 'true' ,
+                              'fa-exclamation-triangle icon-failure': ping.doc.dns == 'false' }"></i>
         </td>
         <td>
-          <span
-            class="glyphicon"
-            [ngClass]="{  'glyphicon-ok icon-success': ping.doc.web == 'true' ,
-                          'glyphicon-remove icon-failure': ping.doc.web == 'false' }"></span>
+          <i aria-hidden="true" class="fa"
+            [ngClass]="{  'fa-check icon-success': ping.doc.web == 'true' ,
+                          'fa-exclamation-triangle icon-failure': ping.doc.web == 'false' }"></i>
         </td>
       </tr>
     </tbody>
