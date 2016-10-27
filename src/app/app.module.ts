@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -13,6 +13,9 @@ import { HomeComponent } from './home/home.component';
 import { DateFormatPipe } from './date-format.pipe';
 import { PercentFormatPipe } from './percent-format.pipe';
 
+import { ResultFilterComponent } from './result-filter/result-filter.component';
+import { DatetimeValidatorDirective } from './datetime-validator.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,11 +23,14 @@ import { PercentFormatPipe } from './percent-format.pipe';
     MenuComponent,
     PingslistComponent,
     DateFormatPipe,
-    PercentFormatPipe
+    PercentFormatPipe,
+    ResultFilterComponent,
+    DatetimeValidatorDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],

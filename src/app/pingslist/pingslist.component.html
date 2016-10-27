@@ -1,29 +1,38 @@
-<h2>Measures : {{pings.total_rows}} </h2>
+<h2>Measures :
+  <small>All times : {{pings.total_rows}}</small>
+</h2>
+
+<cmd-result-filter
+  class="vert-spaced"
+  [startDate]="currentStartDate"
+  [endDate]="currentEndDate"
+  (filterSubmitted)="filterList($event)"></cmd-result-filter>
+
 <div class="table-responsive">
   <table class="table table-sm">
     <thead>
-      <th>Date/Time</th>
-      <th>Latency</th>
-      <th>Packet loss</th>
-      <th>DNS</th>
-      <th>Web</th>
+    <th>Date/Time</th>
+    <th>Latency</th>
+    <th>Packet loss</th>
+    <th>DNS</th>
+    <th>Web</th>
     </thead>
     <tbody>
-      <tr *ngFor="let ping of pings.rows">
-        <td>{{ping.id | dateFormat }}</td>
-        <td>{{ping.doc.latency}}</td>
-        <td>{{ping.doc.packetloss | percentFormat }}</td>
-        <td>
-            <i aria-hidden="true" class="fa"
-                [ngClass]="{  'fa-check icon-success': ping.doc.dns == 'true' ,
-                              'fa-exclamation-triangle icon-failure': ping.doc.dns == 'false' }"></i>
-        </td>
-        <td>
-          <i aria-hidden="true" class="fa"
-            [ngClass]="{  'fa-check icon-success': ping.doc.web == 'true' ,
-                          'fa-exclamation-triangle icon-failure': ping.doc.web == 'false' }"></i>
-        </td>
-      </tr>
+    <tr *ngFor="let ping of pings.rows">
+      <td>{{ping.id | dateFormat }}</td>
+      <td>{{ping.doc.latency}}</td>
+      <td>{{ping.doc.packetloss | percentFormat }}</td>
+      <td>
+        <i aria-hidden="true" class="fa"
+           [ngClass]="{  'fa-check icon-success': ping.doc.dns == 'true' ,
+                         'fa-exclamation-triangle icon-failure': ping.doc.dns == 'false' }"></i>
+      </td>
+      <td>
+        <i aria-hidden="true" class="fa"
+           [ngClass]="{ 'fa-check icon-success': ping.doc.web == 'true' ,
+                        'fa-exclamation-triangle icon-failure': ping.doc.web == 'false' }"></i>
+      </td>
+    </tr>
     </tbody>
   </table>
- </div>
+</div>
