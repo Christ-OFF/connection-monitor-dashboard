@@ -42,10 +42,10 @@ export class PingService {
       + '?' + INCLUDE_DOCS
       + '&' + DESCENDING
       + '&' + HARD_LIMIT;
-    if ( end != null ){
+    if ( end != null ) {
       url = url + '&' + STARTKEY + '"' + this.convertDateToKey(end) + '"';
     }
-    if ( start != null ){
+    if ( start != null ) {
       url = url + '&' + ENDKEY + '"' + this.convertDateToKey(start) + '"';
     }
     return this.http.get(url).map( response => response.json() );

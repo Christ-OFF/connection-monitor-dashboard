@@ -8,6 +8,24 @@
   [endDate]="currentEndDate"
   (filterSubmitted)="filterList($event)"></cmd-result-filter>
 
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card-header">Count</div>
+    <div class="card card-block"><p class="card-text">{{count}}</p></div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card-header">Average</div>
+    <div class="card card-block"><p class="card-text">{{avgLatency | number:'.3-3'}} ms</p></div>
+  </div>
+  <div class="col-sm-6 text-xs-center">
+    <div class="card-header">Actions</div>
+    <div class="card card-block">
+      <a (click)="refreshHour()" class="btn btn-primary">1 hour</a>
+      <a (click)="refresh2Hours()" class="btn btn-primary">2 hours</a>
+    </div>
+  </div>
+</div>
+
 <div class="table-responsive">
   <table class="table table-sm">
     <thead>
@@ -20,7 +38,7 @@
     <tbody>
     <tr *ngFor="let ping of pings.rows">
       <td>{{ping.id | dateFormat }}</td>
-      <td>{{ping.doc.latency}}</td>
+      <td>{{ping.doc.latency}} ms</td>
       <td>{{ping.doc.packetloss | percentFormat }}</td>
       <td>
         <i aria-hidden="true" class="fa"
