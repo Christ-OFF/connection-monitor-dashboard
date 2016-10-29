@@ -11,7 +11,6 @@ export class DatetimeValidatorDirective {
   constructor() { }
 
   validate(c: AbstractControl): { [key: string]: any } {
-    console.log('VALIDATE' + c.value);
     let date = moment( c.value, 'DD/MM/YYYY HH:mm' );
     let invalid = { datetimeInvalid: { valid: false } };
     if (date.isValid()) {

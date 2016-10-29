@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { CouchDBModel } from './models/couchdb.model';
+import {CouchDBModel} from './models/couchdb.model';
 import * as moment from 'moment';
 /**
  * Let's start with some constants to make couchdb url easier to build
@@ -22,7 +22,8 @@ const HARD_LIMIT = 'limit=1000';
 @Injectable()
 export class PingService {
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+  }
 
   /**
    * keys are unix time in seconds
@@ -42,13 +43,27 @@ export class PingService {
       + '?' + INCLUDE_DOCS
       + '&' + DESCENDING
       + '&' + HARD_LIMIT;
-    if ( end != null ) {
+    if (end != null) {
       url = url + '&' + STARTKEY + '"' + this.convertDateToKey(end) + '"';
     }
-    if ( start != null ) {
+    if (start != null) {
       url = url + '&' + ENDKEY + '"' + this.convertDateToKey(start) + '"';
     }
-    return this.http.get(url).map( response => response.json() );
+    return this.http.get(url).map(response => response.json());
+  }
+
+  /**
+   * Return one measure that is considered fresh engough
+   * @returns {Observable<R>}
+   */
+  lastFresh(): Observable<CouchDBModel> {
+    let url: string = BASE_URL
+      + '?' + INCLUDE_DOCS
+      + '&' + DESCENDING
+      + '&' + HARD_LIMIT;
+    let sixminutesago = moment().subtract(6, 'minute').toDate();
+    url = url + '&' + ENDKEY + '"' + this.convertDateToKey(sixminutesago) + '"';
+    return this.http.get(url).map(response => response.json());
   }
 
 }

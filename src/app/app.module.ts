@@ -15,6 +15,7 @@ import { PercentFormatPipe } from './percent-format.pipe';
 
 import { ResultFilterComponent } from './result-filter/result-filter.component';
 import { DatetimeValidatorDirective } from './datetime-validator.directive';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DatetimeValidatorDirective } from './datetime-validator.directive';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
