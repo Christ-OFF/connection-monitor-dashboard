@@ -40,7 +40,7 @@ export class ResultFilterComponent implements OnInit {
   doFilter() {
     // Parse
     let startDateOut: Date = moment(this.startDateText, this.DATE_FORMAT).toDate();
-    let endDateOut:Date = moment(this.endDateText, this.DATE_FORMAT).toDate();
+    let endDateOut: Date = moment(this.endDateText, this.DATE_FORMAT).toDate();
     // Emit
     this.filterSubmitted.emit({
       startDate: startDateOut,
