@@ -31,19 +31,29 @@
     <thead>
     <th>Date/Time</th>
     <th>Latency</th>
+    <th>Latency 2</th>
     <th>Packet loss</th>
+    <th>Packet loss 2</th>
     <th>DNS</th>
+    <th>DNS 2</th>
     <th>Web</th>
     </thead>
     <tbody>
     <tr *ngFor="let ping of pings.rows">
       <td>{{ping.id | dateFormat }}</td>
-      <td>{{ping.doc.latency}} ms</td>
+      <td>{{ping.doc.latency | latency}}</td>
+      <td>{{ping.doc.latency2 | latency}}</td>
       <td>{{ping.doc.packetloss | percentFormat }}</td>
+      <td>{{ping.doc.packetloss2 | percentFormat }}</td>
       <td>
         <i aria-hidden="true" class="fa"
            [ngClass]="{  'fa-check icon-success': ping.doc.dns == 'true' ,
                          'fa-exclamation-triangle icon-failure': ping.doc.dns == 'false' }"></i>
+      </td>
+      <td>
+        <i aria-hidden="true" class="fa"
+           [ngClass]="{  'fa-check icon-success': ping.doc.dns2 == 'true' ,
+                         'fa-exclamation-triangle icon-failure': ping.doc.dns2 == 'false' }"></i>
       </td>
       <td>
         <i aria-hidden="true" class="fa"

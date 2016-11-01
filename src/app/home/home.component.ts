@@ -19,6 +19,10 @@ export class HomeComponent implements OnInit {
     return this._pings.rows.length > 0 && this._pings.rows[0].doc.dns === 'true';
   }
 
+  get dns2IsOk(): boolean {
+    return this._pings.rows.length > 0 && this._pings.rows[0].doc.dns2 === 'true';
+  }
+
   get webIsOk(): boolean {
     return this._pings.rows.length > 0 && this._pings.rows[0].doc.web === 'true';
   }
@@ -31,9 +35,25 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  get latency2(): number {
+    if ( this._pings.rows.length > 0 ) {
+      return parseFloat(this._pings.rows[0].doc.latency2);
+    } else {
+      return 0.0;
+    }
+  }
+
   get packetloss(): number {
     if ( this._pings.rows.length > 0 ) {
       return parseInt(this._pings.rows[0].doc.packetloss, 10);
+    } else {
+      return 100;
+    }
+  }
+
+  get packetloss2(): number {
+    if ( this._pings.rows.length > 0 ) {
+      return parseInt(this._pings.rows[0].doc.packetloss2, 10);
     } else {
       return 100;
     }

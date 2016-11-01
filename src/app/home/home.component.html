@@ -3,38 +3,45 @@
     <div class="card text-xs-center">
       <div class="card-header">Measure</div>
       <div class="card-block">
-        <p class="card-text">
+        <span class="card-text">
           <i class="fa"
              [ngClass]="{ 'fa-check-circle icon-success': measureIsOk,
                         'fa-times-circle icon-failure': !measureIsOk }" aria-hidden="true"></i>
-        </p>
+        </span>
       </div>
     </div>
     <div class="card text-xs-center">
       <div class="card-header">DNS</div>
       <div class="card-block">
-        <p class="card-text">
+        <span class="card-text">
           <i class="fa"
              [ngClass]="{ 'fa-check-circle icon-success': dnsIsOk,
                         'fa-times-circle icon-failure': !dnsIsOk }" aria-hidden="true"></i>
-        </p>
+          /
+          <i class="fa"
+             [ngClass]="{ 'fa-check-circle icon-success': dns2IsOk,
+                        'fa-times-circle icon-failure': !dns2IsOk }" aria-hidden="true"></i>
+        </span>
       </div>
     </div>
     <div class="card text-xs-center">
       <div class="card-header">Web</div>
       <div class="card-block">
-        <p class="card-text">
+        <span class="card-text">
           <i class="fa"
              [ngClass]="{ 'fa-check-circle icon-success': webIsOk,
                         'fa-times-circle icon-failure': !webIsOk }" aria-hidden="true"></i>
-        </p>
+        </span>
       </div>
     </div>
     <div class="card text-xs-center">
       <div class="card-header">Latency</div>
       <div class="card-block">
-        <p *ngIf="latency > 0" class="card-text">{{latency}} ms</p>
-        <p *ngIf="latency == 0" class="card-text"><i class="fa fa-times-circle icon-failure" aria-hidden="true"></i></p>
+        <span *ngIf="latency > 0" class="card-text">{{latency}} ms</span>
+        <span *ngIf="latency == 0" class="card-text"><i class="fa fa-times-circle icon-failure" aria-hidden="true"></i></span>
+        /
+        <span *ngIf="latency2 > 0" class="card-text">{{latency2}} ms</span>
+        <span *ngIf="latency2 == 0" class="card-text"><i class="fa fa-times-circle icon-failure" aria-hidden="true"></i></span>
       </div>
     </div>
     <div class="card text-xs-center">
@@ -46,4 +53,5 @@
 
 <div class="text-xs-center">
   <a class="btn btn-large btn-primary" routerLink="/pings">Lists of measures</a>
+  <a class="btn btn-large btn-primary" routerLink="/chart">Chart</a>
 </div>

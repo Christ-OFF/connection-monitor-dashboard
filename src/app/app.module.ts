@@ -16,6 +16,10 @@ import { PercentFormatPipe } from './percent-format.pipe';
 import { ResultFilterComponent } from './result-filter/result-filter.component';
 import { DatetimeValidatorDirective } from './datetime-validator.directive';
 import { CommonModule } from '@angular/common';
+import { DisplaychartComponent } from './displaychart/displaychart.component';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { LatencyPipe } from './latency.pipe';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { CommonModule } from '@angular/common';
     DateFormatPipe,
     PercentFormatPipe,
     ResultFilterComponent,
-    DatetimeValidatorDirective
+    DatetimeValidatorDirective,
+    DisplaychartComponent,
+    LatencyPipe
   ],
   imports: [
     BrowserModule,
@@ -34,9 +40,12 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    ChartsModule
+
   ],
   providers: [ PingService ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+
 })
 export class AppModule { }

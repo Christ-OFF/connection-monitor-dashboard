@@ -38,11 +38,11 @@ export class PingService {
    *  /ping/_all_docs?include_doc s=true&descending=true&startkey=%221477252601%22&endkey=%221477251301%22
    * @returns {Observable<R>}
    */
-  list(start: Date = null, end: Date = null): Observable<CouchDBModel> {
-    let url: string = BASE_URL
-      + '?' + INCLUDE_DOCS
-      + '&' + DESCENDING
-      + '&' + HARD_LIMIT;
+  list(start: Date = null, end: Date = null, descending = true): Observable<CouchDBModel> {
+    let url: string = BASE_URL + '?' + INCLUDE_DOCS + '&' + HARD_LIMIT;
+    if (descending) {
+      url = url + '&' + DESCENDING;
+    }
     if (end != null) {
       url = url + '&' + STARTKEY + '"' + this.convertDateToKey(end) + '"';
     }
