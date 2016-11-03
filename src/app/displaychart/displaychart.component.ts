@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import {PingService} from '../ping.service';
-import {CouchDBModel} from '../models/couchdb.model';
+import { PingService } from '../ping.service';
+import { CouchDBModel } from '../models/couchdb.model';
 
 const DATE_FORMAT = 'DD/MM/YYYY HH:mm';
 
@@ -18,13 +18,34 @@ export class DisplaychartComponent implements OnInit {
   // lineChart
   public lineChartData: Array<any> = [
     {data: [], label: 'Latency', fill: false},
-    {data: [], label: 'Latency2', fill: false}
+    {data: [], label: 'Download', fill: false},
+    {data: [], label: 'Upload', fill: false},
+
   ];
   public lineChartLabels: Array<any> = [];
   public lineChartOptions: any = {
     animation: false,
     responsive: true
   };
+
+  public lineChartColors: Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+    { // download = blue
+      backgroundColor: '#62aee5',
+      borderColor: '#5DA5DA'
+    },
+    { // upload = red
+      backgroundColor: '#F15854',
+      borderColor: '#F15854'
+    }
+  ];
 
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
@@ -54,10 +75,15 @@ export class DisplaychartComponent implements OnInit {
       } else {
         this.lineChartData[0].data.push(ping.doc.latency);
       }
-      if (ping.doc.latency2 === '0') {
+      if (ping.doc.download === '0') {
         this.lineChartData[1].data.push(null);
       } else {
-        this.lineChartData[1].data.push(ping.doc.latency2);
+        this.lineChartData[1].data.push(ping.doc.download);
+      }
+      if (ping.doc.upload === '0') {
+        this.lineChartData[2].data.push(null);
+      } else {
+        this.lineChartData[2].data.push(ping.doc.upload);
       }
     }
   }

@@ -1,19 +1,19 @@
-import {Component, OnInit, Input, AfterContentInit} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'cmd-dnsindicator',
   templateUrl: './dnsindicator.component.html',
   styleUrls: ['./dnsindicator.component.css']
 })
-export class DnsindicatorComponent{
+export class DnsindicatorComponent {
 
-  @Input() set dns1(value : boolean){
+  @Input() set dns1(value: boolean) {
     if (value) {
       this.level++;
     }
   }
 
-  @Input() set dns2(value: boolean){
+  @Input() set dns2(value: boolean) {
     if (value) {
       this.level++;
     }

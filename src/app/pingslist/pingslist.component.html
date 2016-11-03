@@ -34,6 +34,8 @@
     <th>Packet loss</th>
     <th>DNS</th>
     <th>Web</th>
+    <th>Download</th>
+    <th>Upload</th>
     </thead>
     <tbody>
     <tr *ngFor="let ping of pings.rows">
@@ -47,6 +49,12 @@
         <i aria-hidden="true" class="fa"
            [ngClass]="{ 'fa-check icon-success': ping.doc.web == 'true' ,
                         'fa-exclamation-triangle icon-failure': ping.doc.web == 'false' }"></i>
+      </td>
+      <td>
+        {{ ping.doc.download }}
+      </td>
+      <td>
+        {{ ping.doc.upload }}
       </td>
     </tr>
     </tbody>

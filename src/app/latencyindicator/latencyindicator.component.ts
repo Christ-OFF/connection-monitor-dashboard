@@ -7,7 +7,7 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class LatencyindicatorComponent implements OnInit {
 
-  @Input() set latency1(value : string){
+  @Input() set latency1(value: string) {
     if (value != null) {
       this.totalLatency += parseFloat(value);
       this.count++;
@@ -19,7 +19,7 @@ export class LatencyindicatorComponent implements OnInit {
   private count = 0;
 
   get latency(): string {
-    if (this.count == 0) {
+    if (this.count === 0) {
       return 'N/A';
     } else {
       return ( this.totalLatency / this.count ).toFixed(3) + ' ms';

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'cmd-lossindicator',
@@ -7,13 +7,13 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class LossindicatorComponent {
 
-  @Input() set loss1( value: number){
+  @Input() set loss1( value: number) {
     if (value != null) {
       this.packetLoss += value;
       this.count++;
     }
   }
-  @Input() set loss2(value : number){
+  @Input() set loss2(value: number) {
     if (value != null) {
       this.packetLoss += value;
       this.count++;
@@ -24,7 +24,7 @@ export class LossindicatorComponent {
   private count = 0;
 
   get loss(): string {
-    if (this.count == 0){
+    if (this.count === 0) {
       return 'N/A';
     } else {
       return this.packetLoss / this.count + ' %';

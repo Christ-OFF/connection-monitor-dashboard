@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PingService } from '../ping.service';
-import { CouchDBModel } from '../models/couchdb.model';
 
 @Component({
   selector: 'cmd-home',
@@ -17,6 +16,8 @@ export class HomeComponent implements OnInit {
   latency2: number;
   packetloss: number;
   packetloss2: number;
+  download: number;
+  upload: number;
 
   constructor(private pingService: PingService) { }
 
@@ -31,6 +32,8 @@ export class HomeComponent implements OnInit {
           this.webIsOk = receivedPings.rows[0].doc.web === 'true';
           this.packetloss = parseInt(receivedPings.rows[0].doc.packetloss, 10);
           this.packetloss2 = parseInt(receivedPings.rows[0].doc.packetloss2, 10);
+          this.download = parseFloat(receivedPings.rows[0].doc.download);
+          this.upload = parseFloat(receivedPings.rows[0].doc.upload);
         }
     });
   }

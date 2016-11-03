@@ -9,4 +9,6 @@ export interface PingdocModel {
   packetloss: string;   // 0 to 100
   packetloss2: string;
   web: string;
+  download: string;
+  upload; string;
 }
