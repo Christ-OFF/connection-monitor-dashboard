@@ -19,6 +19,9 @@ import { CommonModule } from '@angular/common';
 import { DisplaychartComponent } from './displaychart/displaychart.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { LatencyPipe } from './latency.pipe';
+import { DnsindicatorComponent } from './dnsindicator/dnsindicator.component';
+import { LossindicatorComponent } from './lossindicator/lossindicator.component';
+import { LatencyindicatorComponent } from './latencyindicator/latencyindicator.component';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import { LatencyPipe } from './latency.pipe';
     ResultFilterComponent,
     DatetimeValidatorDirective,
     DisplaychartComponent,
-    LatencyPipe
+    LatencyPipe,
+    DnsindicatorComponent,
+    LossindicatorComponent,
+    LatencyindicatorComponent
   ],
   imports: [
     BrowserModule,

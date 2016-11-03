@@ -1,0 +1,11 @@
+.dns-success {
+  color: #5CB85C;
+}
+
+.dns-half {
+  color: #FFA500;
+}
+
+.dns-failure {
+  color: #b85c5c;
+}

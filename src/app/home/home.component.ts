@@ -9,60 +9,30 @@ import { CouchDBModel } from '../models/couchdb.model';
 })
 export class HomeComponent implements OnInit {
 
-  private _pings: CouchDBModel = {total_rows: 0, offset: 0, rows: []};
-
-  get measureIsOk(): boolean {
-    return this._pings.rows.length > 0;
-  }
-
-  get dnsIsOk(): boolean {
-    return this._pings.rows.length > 0 && this._pings.rows[0].doc.dns === 'true';
-  }
-
-  get dns2IsOk(): boolean {
-    return this._pings.rows.length > 0 && this._pings.rows[0].doc.dns2 === 'true';
-  }
-
-  get webIsOk(): boolean {
-    return this._pings.rows.length > 0 && this._pings.rows[0].doc.web === 'true';
-  }
-
-  get latency(): number {
-    if ( this._pings.rows.length > 0 ) {
-      return parseFloat(this._pings.rows[0].doc.latency);
-    } else {
-      return 0.0;
-    }
-  }
-
-  get latency2(): number {
-    if ( this._pings.rows.length > 0 ) {
-      return parseFloat(this._pings.rows[0].doc.latency2);
-    } else {
-      return 0.0;
-    }
-  }
-
-  get packetloss(): number {
-    if ( this._pings.rows.length > 0 ) {
-      return parseInt(this._pings.rows[0].doc.packetloss, 10);
-    } else {
-      return 100;
-    }
-  }
-
-  get packetloss2(): number {
-    if ( this._pings.rows.length > 0 ) {
-      return parseInt(this._pings.rows[0].doc.packetloss2, 10);
-    } else {
-      return 100;
-    }
-  }
+  measureIsOk: boolean;
+  dnsIsOk: boolean;
+  dns2IsOk: boolean;
+  webIsOk: boolean;
+  latency: number;
+  latency2: number;
+  packetloss: number;
+  packetloss2: number;
 
   constructor(private pingService: PingService) { }
 
   ngOnInit() {
-    this.pingService.lastFresh().subscribe(receivedPings => this._pings = receivedPings);
+    this.pingService.lastFresh().subscribe(receivedPings => {
+        if (receivedPings.rows.length > 0) {
+          this.measureIsOk = true;
+          this.dnsIsOk = receivedPings.rows[0].doc.dns === 'true';
+          this.dns2IsOk = receivedPings.rows[0].doc.dns2 === 'true';
+          this.latency = parseFloat(receivedPings.rows[0].doc.latency);
+          this.latency2 = parseFloat(receivedPings.rows[0].doc.latency2);
+          this.webIsOk = receivedPings.rows[0].doc.web === 'true';
+          this.packetloss = parseInt(receivedPings.rows[0].doc.packetloss, 10);
+          this.packetloss2 = parseInt(receivedPings.rows[0].doc.packetloss2, 10);
+        }
+    });
   }
 
 }
