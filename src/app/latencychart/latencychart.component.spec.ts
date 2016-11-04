@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { DisplaychartComponent } from './displaychart.component';
+import { LatencychartComponent } from './latencychart.component';
 
-describe('DisplaychartComponent', () => {
-  let component: DisplaychartComponent;
-  let fixture: ComponentFixture<DisplaychartComponent>;
+describe('LatencychartComponent', () => {
+  let component: LatencychartComponent;
+  let fixture: ComponentFixture<LatencychartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DisplaychartComponent ]
+      declarations: [ LatencychartComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DisplaychartComponent);
+    fixture = TestBed.createComponent(LatencychartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

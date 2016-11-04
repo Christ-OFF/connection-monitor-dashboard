@@ -16,12 +16,13 @@ import { PercentFormatPipe } from './percent-format.pipe';
 import { ResultFilterComponent } from './result-filter/result-filter.component';
 import { DatetimeValidatorDirective } from './datetime-validator.directive';
 import { CommonModule } from '@angular/common';
-import { DisplaychartComponent } from './displaychart/displaychart.component';
+import { LatencychartComponent } from './latencychart/latencychart.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { LatencyPipe } from './latency.pipe';
 import { DnsindicatorComponent } from './dnsindicator/dnsindicator.component';
 import { LossindicatorComponent } from './lossindicator/lossindicator.component';
 import { LatencyindicatorComponent } from './latencyindicator/latencyindicator.component';
+import { RatechartComponent } from './ratechart/ratechart.component';
 
 
 @NgModule({
@@ -34,11 +35,12 @@ import { LatencyindicatorComponent } from './latencyindicator/latencyindicator.c
     PercentFormatPipe,
     ResultFilterComponent,
     DatetimeValidatorDirective,
-    DisplaychartComponent,
+    LatencychartComponent,
     LatencyPipe,
     DnsindicatorComponent,
     LossindicatorComponent,
-    LatencyindicatorComponent
+    LatencyindicatorComponent,
+    RatechartComponent
   ],
   imports: [
     BrowserModule,
