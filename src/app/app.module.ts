@@ -22,7 +22,6 @@ import { LatencyPipe } from './latency.pipe';
 import { DnsindicatorComponent } from './dnsindicator/dnsindicator.component';
 import { LossindicatorComponent } from './lossindicator/lossindicator.component';
 import { LatencyindicatorComponent } from './latencyindicator/latencyindicator.component';
-import { RatechartComponent } from './ratechart/ratechart.component';
 
 
 @NgModule({
@@ -39,8 +38,7 @@ import { RatechartComponent } from './ratechart/ratechart.component';
     LatencyPipe,
     DnsindicatorComponent,
     LossindicatorComponent,
-    LatencyindicatorComponent,
-    RatechartComponent
+    LatencyindicatorComponent
   ],
   imports: [
     BrowserModule,

@@ -40,23 +40,10 @@
         <p class="card-text">
           <cmd-lossindicator [loss1]="packetloss" [loss2]="packetloss2"></cmd-lossindicator></p></div>
     </div>
-    <div class="card text-xs-center">
-      <div class="card-header">Download</div>
-      <div class="card-block">
-        <p class="card-text">{{ download }} mB/s</p>
-      </div>
-    </div>
-    <div class="card text-xs-center">
-      <div class="card-header">upload</div>
-      <div class="card-block">
-        <p class="card-text">{{ upload }} mB/s</p>
-      </div>
-    </div>
   </div>
 </div>
 
 <div class="text-xs-center">
   <a class="btn btn-large btn-primary" routerLink="/pings">Lists of measures</a>
   <a class="btn btn-large btn-primary" routerLink="/latencychart">Latency Chart</a>
-  <a class="btn btn-large btn-primary" routerLink="/ratechart">Rate Chart</a>
 </div>
