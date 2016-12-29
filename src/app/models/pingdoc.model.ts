@@ -3,7 +3,10 @@
  */
 export interface PingdocModel {
   dns: string;
-  latency: number;      // in ms XX.YYY
-  packetloss: number;   // 0 to 100
+  dns2: string;
+  latency: string;      // in ms XX.YYY
+  latency2: string;
+  packetloss: string;   // 0 to 100
+  packetloss2: string;
   web: string;
 }

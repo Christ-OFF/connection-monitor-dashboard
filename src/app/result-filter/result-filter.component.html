@@ -1,0 +1,27 @@
+<form (ngSubmit)="doFilter()" class="form-inline">
+
+  <div class="form-group" [ngClass]="{'has-danger': startDate.dirty && startDate.errors }">
+    <label for="startDate" class="form-control-label">start</label>
+    <input id="startDate" type="text" class="form-control"
+           placeholder="{{DATE_FORMAT}}"
+           name="formStartDate"
+           [(ngModel)]="startDateText"
+           required pattern="{{PATTERN}}" cmdDatetimeValidator
+           #startDate="ngModel"
+           [ngClass]="{'form-control-danger': startDate.dirty && startDate.errors }">
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-danger': endDate.dirty && endDate.errors }">
+    <label for="endDate" class="form-control-label">end</label>
+    <input id="endDate" type="text" class="form-control form-control-danger"
+           placeholder="{{DATE_FORMAT}}"
+           name="formEndDate"
+           [(ngModel)]="endDateText"
+           required pattern="{{PATTERN}}" cmdDatetimeValidator
+           #endDate="ngModel"
+           [ngClass]="{'form-control-danger': endDate.dirty && endDate.errors }">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

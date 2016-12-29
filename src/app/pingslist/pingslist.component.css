@@ -1,0 +1,11 @@
+.icon-success {
+  color: #5CB85C;
+}
+
+.icon-failure {
+  color: #b85c5c;
+}
+
+.vert-spaced {
+  margin: 1rem -1rem;
+}

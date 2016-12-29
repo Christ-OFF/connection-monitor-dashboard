@@ -1,31 +1,54 @@
-<h2>Measures : {{pings.total_rows}} </h2>
+<h2>Measures :
+  <small>All times : {{pings.total_rows}}</small>
+</h2>
+
+<cmd-result-filter
+  class="vert-spaced"
+  [startDate]="currentStartDate"
+  [endDate]="currentEndDate"
+  (filterSubmitted)="filterList($event)"></cmd-result-filter>
+
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card-header">Count</div>
+    <div class="card card-block"><p class="card-text">{{count}}</p></div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card-header">Average</div>
+    <div class="card card-block"><p class="card-text">{{avgLatency | number:'.3-3'}} ms</p></div>
+  </div>
+  <div class="col-sm-6 text-xs-center">
+    <div class="card-header">Actions</div>
+    <div class="card card-block">
+      <a (click)="refreshHour()" class="btn btn-primary">1 hour</a>
+      <a (click)="refresh2Hours()" class="btn btn-primary">2 hours</a>
+    </div>
+  </div>
+</div>
+
 <div class="table-responsive">
-  <table class="table table-striped">
+  <table class="table table-sm">
     <thead>
-      <th>Date/Time</th>
-      <th>Latency</th>
-      <th>% PacketLoss</th>
-      <th>DNS</th>
-      <th>Web</th>
+    <th>Date/Time</th>
+    <th>Latency</th>
+    <th>Packet loss</th>
+    <th>DNS</th>
+    <th>Web</th>
     </thead>
     <tbody>
-      <tr *ngFor="let ping of pings.rows">
-        <td>{{ping.id | dateFormat }}</td>
-        <td>{{ping.doc.latency}}</td>
-        <td>{{ping.doc.packetloss | percentFormat }}</td>
-        <td>
-            <span
-                class="glyphicon"
-                [ngClass]="{  'glyphicon-ok': ping.doc.dns == 'true' ,
-                              'glyphicon-remove': ping.doc.dns == 'false' }"></span>
-        </td>
-        <td>
-          <span
-            class="glyphicon"
-            [ngClass]="{  'glyphicon-ok': ping.doc.web == 'true' ,
-                          'glyphicon-remove': ping.doc.web == 'false' }"></span>
-        </td>
-      </tr>
+    <tr *ngFor="let ping of pings.rows">
+      <td>{{ping.id | dateFormat }}</td>
+      <td><cmd-latencyindicator [latency1]="ping.doc.latency" [latency2]="ping.doc.latency2"></cmd-latencyindicator></td>
+      <td><cmd-lossindicator [loss1]="ping.doc.packetloss" [loss2]="ping.doc.packetloss2"></cmd-lossindicator></td>
+      <td>
+        <cmd-dnsindicator [dns1]="ping.doc.dns" [dns2]="ping.doc.dns2" [size]="'1em'"></cmd-dnsindicator>
+      </td>
+      <td>
+        <i aria-hidden="true" class="fa"
+           [ngClass]="{ 'fa-check icon-success': ping.doc.web == 'true' ,
+                        'fa-exclamation-triangle icon-failure': ping.doc.web == 'false' }"></i>
+      </td>
+    </tr>
     </tbody>
   </table>
- </div>
+</div>

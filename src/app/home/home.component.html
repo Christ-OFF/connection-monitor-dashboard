@@ -1,7 +1,49 @@
-<div class="text-center" style="margin-top: 100px">
-  <h1>Connection Monitor Dashboard <small>See if connection is working</small></h1>
+<div class="card-deck-wrapper">
+  <div class="card-deck">
+    <div class="card text-xs-center">
+      <div class="card-header">Measure</div>
+      <div class="card-block">
+        <span class="card-text">
+          <i class="fa"
+             [ngClass]="{ 'fa-check-circle icon-success': measureIsOk,
+                        'fa-times-circle icon-failure': !measureIsOk }" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+    <div class="card text-xs-center">
+      <div class="card-header">DNS</div>
+      <div class="card-block">
+        <span class="card-text">
+          <cmd-dnsindicator [dns1]="dns2IsOk" [dns2]="dns2IsOk" [size]="'3em'"></cmd-dnsindicator>
+        </span>
+      </div>
+    </div>
+    <div class="card text-xs-center">
+      <div class="card-header">Web</div>
+      <div class="card-block">
+        <span class="card-text">
+          <i class="fa"
+             [ngClass]="{ 'fa-check-circle icon-success': webIsOk,
+                        'fa-times-circle icon-failure': !webIsOk }" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+    <div class="card text-xs-center">
+      <div class="card-header">Latency</div>
+      <div class="card-block">
+        <cmd-latencyindicator [latency1]="latency" [latency2]="latency2"></cmd-latencyindicator>
+      </div>
+    </div>
+    <div class="card text-xs-center">
+      <div class="card-header">Loss</div>
+      <div class="card-block">
+        <p class="card-text">
+          <cmd-lossindicator [loss1]="packetloss" [loss2]="packetloss2"></cmd-lossindicator></p></div>
+    </div>
+  </div>
 </div>
 
-<div class="text-center">
+<div class="text-xs-center">
   <a class="btn btn-large btn-primary" routerLink="/pings">Lists of measures</a>
+  <a class="btn btn-large btn-primary" routerLink="/latencychart">Latency Chart</a>
 </div>

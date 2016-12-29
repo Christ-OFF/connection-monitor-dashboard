@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>Chart :</h2>
+    </div>
+    <div class="col-sm-12">
+      <canvas baseChart
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              [colors]="lineChartColors">
+      </canvas>
+    </div>
+  </div>
+</div>
