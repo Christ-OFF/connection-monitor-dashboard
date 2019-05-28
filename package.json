@@ -31,7 +31,7 @@
     "zone.js": "0.6.25"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.2.30",
+    "@types/jasmine": "^3.3.12",
     "@types/node": "^6.0.42",
     "angular-cli": "1.0.0-beta.18",
     "codelyzer": "1.0.0-beta.1",
